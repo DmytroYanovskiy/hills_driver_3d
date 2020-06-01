@@ -429,6 +429,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("There is no upgrade files to delete!");
         }
+        Application.Quit();
     }
 
     private void OnApplicationQuit() //Callback при выходе из игры
@@ -455,9 +456,12 @@ public class game_data
     public int score; //Очки (Деньги)
     public float fuel = 25f; //Максимальный уровень бензина
     public float maxFuel = 0f; //Переменная для хранения максимального уровня бензина на время уровня
+    public float fuelSpeed = 0.75f;
     public string body_model; //ID модели корпуса
     public string attachments; //ID модели декоративных элементов
     public string wheels; //ID модели колёс
+    public bool level_2; //Открыт ли доступ к уровню ОСЕНЬ
+    public bool level_3; //Открыт ли доступ к уровню ЗИМА
 
     public float gearTorque; //Скорость транспорта
     public float maxSteeringAngle; //Скорость поворота транспорта в воздухе

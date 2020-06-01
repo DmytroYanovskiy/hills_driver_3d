@@ -10,6 +10,31 @@ public class StoreManager : MonoBehaviour {
     private void Awake() {
         instance = this;
     }
+
+    private void OnEnable() {
+        GameManager.instance.UPDATE_STORE();
+    }
+
+    public void CANCEL_PREVIEW()
+    {
+        GameManager.instance.CANCEL_PREVIEW();
+    }
+
+    public void PREVIEW()
+    {
+        GameManager.instance.PREVIEW();
+    }
+
+    public void INSTALL()
+    {
+        GameManager.instance.INSTALL();
+    }
+
+    public void UPDATE_STORE()
+    {
+        GameManager.instance.UPDATE_STORE();
+    }
+
 }
 
 [System.Serializable]

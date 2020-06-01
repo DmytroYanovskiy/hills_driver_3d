@@ -81,6 +81,9 @@ public class CarController : MonoBehaviour
     {
         gm.gameData.fuel = gm.gameData.maxFuel;
         gm.SaveGameData();
+        isDead = false;
+        PAUSE();
+        
         SceneManager.LoadScene(0);
     }
 
@@ -89,6 +92,8 @@ public class CarController : MonoBehaviour
         GameManager.instance.gameData.fuel = GameManager.instance.gameData.maxFuel;
         GameManager.instance.SaveGameData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        isDead = false;
+        PAUSE();
     }
 
     // Находим визуал колёс
@@ -145,7 +150,7 @@ public class CarController : MonoBehaviour
         {
             if (gm.gameData.fuel > 0) //Отнимаем бензин
             {
-                gm.gameData.fuel -= Time.deltaTime * fuelSpeed;
+                gm.gameData.fuel -= Time.deltaTime * GameManager.instance.gameData.fuelSpeed;
                 updateFuelBar();
             }
 
@@ -218,11 +223,11 @@ public class CarController : MonoBehaviour
 
         if (!onGround && rotate_left)
         {
-            rb.AddTorque(-gm.gameData.maxSteeringAngle * 10, 0, 0, ForceMode.Impulse);
+            rb.AddTorque(gm.gameData.maxSteeringAngle * 10, 0, 0, ForceMode.Impulse);
         }
         if (!onGround && rotate_right)
         {
-            rb.AddTorque(gm.gameData.maxSteeringAngle * 10, 0, 0, ForceMode.Impulse);
+            rb.AddTorque(-gm.gameData.maxSteeringAngle * 10, 0, 0, ForceMode.Impulse);
         }
         if (move && transform.eulerAngles.x < -10f)
         {
